@@ -2,6 +2,7 @@
 using System.IO;
 using System.Runtime.InteropServices;
 
+using Devolutions.Authenticode;
 using Devolutions.ZipAuthenticode;
 
 namespace Devolutions.ZipAuthenticode
@@ -36,9 +37,13 @@ namespace Devolutions.ZipAuthenticode
             signedZipFile.ExportSignatureFile(outputSignatureFileName);
             string sig = signedZipFile.GetSignatureFileData() ?? String.Empty;
 
-            string commentedZipFileName = "../data/test-commented.zip";
-            ZipFile commentedZipFile = new ZipFile(commentedZipFileName);
-            string commentedZipDigest = commentedZipFile.GetDigestString();
+            Signature signature = SignatureHelper.GetSignature("zip.sig.ps1", sig);
+
+            Console.WriteLine("Signature StatusMessage: {0}",
+                signature.StatusMessage);
+
+            Console.WriteLine("Signature Issuer: {0}",
+                 signature.SignerCertificate.Issuer);
         }
 
         static void Main(string[] args)

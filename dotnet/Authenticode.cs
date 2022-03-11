@@ -4,15 +4,13 @@
 #pragma warning disable 1634, 1691
 #pragma warning disable 56523
 
-using Dbg = System.Management.Automation;
 using System.IO;
-using System.Management.Automation.Security;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using DWORD = System.UInt32;
 using Devolutions.Authenticode;
 
-namespace System.Management.Automation
+namespace Devolutions.Authenticode
 {
     /// <summary>
     /// Defines the options that control what data is embedded in the

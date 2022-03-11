@@ -43,8 +43,8 @@ internal class Authenticode
         {
             if (resourceMan is null)
             {
-                global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("System.Management.Automation.resources.Authenticode", typeof(Authenticode).Assembly);
-                resourceMan = temp;
+                //global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("System.Management.Automation.resources.Authenticode", typeof(Authenticode).Assembly);
+                //resourceMan = temp;
             }
 
             return resourceMan;
@@ -69,6 +69,11 @@ internal class Authenticode
         }
     }
 
+    internal static string GetResourceString(string name, System.Globalization.CultureInfo Culture)
+    {
+        return name;
+    }
+
 
     /// <summary>
     ///   Looks up a localized string similar to 
@@ -79,7 +84,7 @@ internal class Authenticode
     {
         get
         {
-            return ResourceManager.GetString("Reason_DoNotRun", resourceCulture);
+            return GetResourceString("Reason_DoNotRun", resourceCulture);
         }
     }
 
@@ -93,7 +98,7 @@ internal class Authenticode
     {
         get
         {
-            return ResourceManager.GetString("Reason_NeverRun", resourceCulture);
+            return GetResourceString("Reason_NeverRun", resourceCulture);
         }
     }
 
@@ -107,7 +112,7 @@ internal class Authenticode
     {
         get
         {
-            return ResourceManager.GetString("Reason_NotTrusted", resourceCulture);
+            return GetResourceString("Reason_NotTrusted", resourceCulture);
         }
     }
 
@@ -121,7 +126,7 @@ internal class Authenticode
     {
         get
         {
-            return ResourceManager.GetString("Reason_RestrictedMode", resourceCulture);
+            return GetResourceString("Reason_RestrictedMode", resourceCulture);
         }
     }
 
@@ -135,7 +140,7 @@ internal class Authenticode
     {
         get
         {
-            return ResourceManager.GetString("Reason_Unknown", resourceCulture);
+            return GetResourceString("Reason_Unknown", resourceCulture);
         }
     }
 
@@ -149,7 +154,7 @@ internal class Authenticode
     {
         get
         {
-            return ResourceManager.GetString("Reason_DisallowedBySafer", resourceCulture);
+            return GetResourceString("Reason_DisallowedBySafer", resourceCulture);
         }
     }
 
@@ -163,7 +168,7 @@ internal class Authenticode
     {
         get
         {
-            return ResourceManager.GetString("Reason_FileContentUnavailable", resourceCulture);
+            return GetResourceString("Reason_FileContentUnavailable", resourceCulture);
         }
     }
 
@@ -177,7 +182,7 @@ internal class Authenticode
     {
         get
         {
-            return ResourceManager.GetString("CertNotGoodForSigning", resourceCulture);
+            return GetResourceString("CertNotGoodForSigning", resourceCulture);
         }
     }
 
@@ -191,7 +196,7 @@ internal class Authenticode
     {
         get
         {
-            return ResourceManager.GetString("TimeStampUrlRequired", resourceCulture);
+            return GetResourceString("TimeStampUrlRequired", resourceCulture);
         }
     }
 
@@ -205,7 +210,7 @@ internal class Authenticode
     {
         get
         {
-            return ResourceManager.GetString("InvalidHashAlgorithm", resourceCulture);
+            return GetResourceString("InvalidHashAlgorithm", resourceCulture);
         }
     }
 
@@ -219,7 +224,7 @@ internal class Authenticode
     {
         get
         {
-            return ResourceManager.GetString("AuthenticodePromptCaption", resourceCulture);
+            return GetResourceString("AuthenticodePromptCaption", resourceCulture);
         }
     }
 
@@ -233,7 +238,7 @@ internal class Authenticode
     {
         get
         {
-            return ResourceManager.GetString("AuthenticodePromptText", resourceCulture);
+            return GetResourceString("AuthenticodePromptText", resourceCulture);
         }
     }
 
@@ -247,7 +252,7 @@ internal class Authenticode
     {
         get
         {
-            return ResourceManager.GetString("AuthenticodePromptText_UnknownPublisher", resourceCulture);
+            return GetResourceString("AuthenticodePromptText_UnknownPublisher", resourceCulture);
         }
     }
 
@@ -261,7 +266,7 @@ internal class Authenticode
     {
         get
         {
-            return ResourceManager.GetString("RemoteFilePromptCaption", resourceCulture);
+            return GetResourceString("RemoteFilePromptCaption", resourceCulture);
         }
     }
 
@@ -275,7 +280,7 @@ internal class Authenticode
     {
         get
         {
-            return ResourceManager.GetString("RemoteFilePromptText", resourceCulture);
+            return GetResourceString("RemoteFilePromptText", resourceCulture);
         }
     }
 
@@ -289,7 +294,7 @@ internal class Authenticode
     {
         get
         {
-            return ResourceManager.GetString("Choice_NeverRun", resourceCulture);
+            return GetResourceString("Choice_NeverRun", resourceCulture);
         }
     }
 
@@ -303,7 +308,7 @@ internal class Authenticode
     {
         get
         {
-            return ResourceManager.GetString("Choice_NeverRun_Help", resourceCulture);
+            return GetResourceString("Choice_NeverRun_Help", resourceCulture);
         }
     }
 
@@ -317,7 +322,7 @@ internal class Authenticode
     {
         get
         {
-            return ResourceManager.GetString("Choice_DoNotRun", resourceCulture);
+            return GetResourceString("Choice_DoNotRun", resourceCulture);
         }
     }
 
@@ -331,7 +336,7 @@ internal class Authenticode
     {
         get
         {
-            return ResourceManager.GetString("Choice_DoNotRun_Help", resourceCulture);
+            return GetResourceString("Choice_DoNotRun_Help", resourceCulture);
         }
     }
 
@@ -345,7 +350,7 @@ internal class Authenticode
     {
         get
         {
-            return ResourceManager.GetString("Choice_RunOnce", resourceCulture);
+            return GetResourceString("Choice_RunOnce", resourceCulture);
         }
     }
 
@@ -359,7 +364,7 @@ internal class Authenticode
     {
         get
         {
-            return ResourceManager.GetString("Choice_RunOnce_Help", resourceCulture);
+            return GetResourceString("Choice_RunOnce_Help", resourceCulture);
         }
     }
 
@@ -373,7 +378,7 @@ internal class Authenticode
     {
         get
         {
-            return ResourceManager.GetString("Choice_AlwaysRun", resourceCulture);
+            return GetResourceString("Choice_AlwaysRun", resourceCulture);
         }
     }
 
@@ -387,7 +392,7 @@ internal class Authenticode
     {
         get
         {
-            return ResourceManager.GetString("Choice_AlwaysRun_Help", resourceCulture);
+            return GetResourceString("Choice_AlwaysRun_Help", resourceCulture);
         }
     }
 
@@ -401,7 +406,7 @@ internal class Authenticode
     {
         get
         {
-            return ResourceManager.GetString("Choice_Suspend", resourceCulture);
+            return GetResourceString("Choice_Suspend", resourceCulture);
         }
     }
 
@@ -415,7 +420,7 @@ internal class Authenticode
     {
         get
         {
-            return ResourceManager.GetString("Choice_Suspend_Help", resourceCulture);
+            return GetResourceString("Choice_Suspend_Help", resourceCulture);
         }
     }
 

@@ -8,7 +8,7 @@ using Devolutions.Authenticode;
 
 using DWORD = System.UInt32;
 
-namespace System.Management.Automation
+namespace Devolutions.Authenticode
 {
     internal static class Win32Errors
     {

@@ -43,8 +43,8 @@ internal class MshSignature
         {
             if (resourceMan is null)
             {
-                global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("System.Management.Automation.resources.MshSignature", typeof(MshSignature).Assembly);
-                resourceMan = temp;
+                //global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("System.Management.Automation.resources.MshSignature", typeof(MshSignature).Assembly);
+                //resourceMan = temp;
             }
 
             return resourceMan;
@@ -69,6 +69,11 @@ internal class MshSignature
         }
     }
 
+    internal static string GetResourceString(string name, System.Globalization.CultureInfo Culture)
+    {
+        return name;
+    }
+
 
     /// <summary>
     ///   Looks up a localized string similar to 
@@ -79,7 +84,7 @@ internal class MshSignature
     {
         get
         {
-            return ResourceManager.GetString("MshSignature_Valid", resourceCulture);
+            return GetResourceString("MshSignature_Valid", resourceCulture);
         }
     }
 
@@ -93,7 +98,7 @@ internal class MshSignature
     {
         get
         {
-            return ResourceManager.GetString("MshSignature_NotSigned", resourceCulture);
+            return GetResourceString("MshSignature_NotSigned", resourceCulture);
         }
     }
 
@@ -107,7 +112,7 @@ internal class MshSignature
     {
         get
         {
-            return ResourceManager.GetString("MshSignature_HashMismatch", resourceCulture);
+            return GetResourceString("MshSignature_HashMismatch", resourceCulture);
         }
     }
 
@@ -121,7 +126,7 @@ internal class MshSignature
     {
         get
         {
-            return ResourceManager.GetString("MshSignature_NotTrusted", resourceCulture);
+            return GetResourceString("MshSignature_NotTrusted", resourceCulture);
         }
     }
 
@@ -135,7 +140,7 @@ internal class MshSignature
     {
         get
         {
-            return ResourceManager.GetString("MshSignature_NotSupportedFileFormat", resourceCulture);
+            return GetResourceString("MshSignature_NotSupportedFileFormat", resourceCulture);
         }
     }
 
@@ -149,7 +154,7 @@ internal class MshSignature
     {
         get
         {
-            return ResourceManager.GetString("MshSignature_NotSupportedFileFormat_NoExtension", resourceCulture);
+            return GetResourceString("MshSignature_NotSupportedFileFormat_NoExtension", resourceCulture);
         }
     }
 
@@ -163,7 +168,7 @@ internal class MshSignature
     {
         get
         {
-            return ResourceManager.GetString("MshSignature_Incompatible", resourceCulture);
+            return GetResourceString("MshSignature_Incompatible", resourceCulture);
         }
     }
 
@@ -177,7 +182,7 @@ internal class MshSignature
     {
         get
         {
-            return ResourceManager.GetString("MshSignature_Incompatible_HashAlgorithm", resourceCulture);
+            return GetResourceString("MshSignature_Incompatible_HashAlgorithm", resourceCulture);
         }
     }
 

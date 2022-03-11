@@ -7,10 +7,12 @@
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 
+using Devolutions.Authenticode;
+
 using DWORD = System.UInt32;
 using BOOL = System.UInt32;
 
-namespace System.Management.Automation.Security
+namespace Devolutions.Authenticode
 {
     // Crypto API native constants
     internal static partial class NativeConstants
@@ -176,9 +178,9 @@ namespace System.Management.Automation.Security
         internal static extern
         IntPtr CertFindCertificateInStore(
             IntPtr hCertStore,
-            Security.NativeMethods.CertOpenStoreEncodingType dwEncodingType,
+            NativeMethods.CertOpenStoreEncodingType dwEncodingType,
             DWORD dwFindFlags,                  // 0
-            Security.NativeMethods.CertFindType dwFindType,
+            NativeMethods.CertFindType dwFindType,
             [MarshalAs(UnmanagedType.LPWStr)] string pvFindPara,
             IntPtr notUsed1);                   // pPrevCertContext
 
