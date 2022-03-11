@@ -59,7 +59,7 @@ namespace Devolutions.Authenticode
         /// </summary>
         /// <param name="c">Certificate object.</param>
         /// <returns>True on success, false otherwise.</returns>
-        internal static bool CertIsGoodForSigning(X509Certificate2 c)
+        public static bool CertIsGoodForSigning(X509Certificate2 c)
         {
             if (!c.HasPrivateKey)
             {
@@ -196,6 +196,18 @@ namespace Devolutions.Authenticode
         internal static string GetApplicationBase(string shellId)
         {
             return "";
+        }
+
+        public static long GetFileSize(string filePath)
+        {
+            long size = 0;
+
+            using (FileStream fs = new(filePath, FileMode.Open))
+            {
+                size = fs.Length;
+            }
+
+            return size;
         }
 
         internal static bool Succeeded(int hresult)
