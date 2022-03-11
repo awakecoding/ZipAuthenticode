@@ -373,6 +373,7 @@ namespace Devolutions.ZipAuthenticode
                     else if (line.StartsWith("# SIG # End signature block"))
                     {
                         inSigBlock = false;
+                        break;
                     }
                     else if (inSigBlock)
                     {
