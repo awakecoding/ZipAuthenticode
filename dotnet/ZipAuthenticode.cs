@@ -303,6 +303,147 @@ namespace Devolutions.ZipAuthenticode
             }
         }
 
+        public string? GetSignatureString()
+        {
+            string? fileComment = GetFileComment(data);
+
+            if (fileComment == null)
+                return null;
+
+            fileComment.ReplaceLineEndings("`n");
+            string[] commentLines = fileComment.Split("`n");
+
+            for (int i = 0; i < commentLines.Length; i++)
+            {
+                string commentLine = commentLines[i].Trim();
+                
+                if (commentLine.StartsWith("ZipAuthenticode"))
+                {
+                    return commentLine;
+                }
+            }
+
+            return null;
+        }
+
+        public string? GetSignatureFileData()
+        {
+            string? sigCommentLine = GetSignatureString();
+
+            if (sigCommentLine == null)
+                return null;
+
+            return SaveSignatureData(sigCommentLine);
+        }
+
+        public void ExportSignatureFile(string filename)
+        {
+            string? sigCommentLine = GetSignatureString();
+
+            if (sigCommentLine != null)
+            {
+                SaveSignatureFile(filename, sigCommentLine);
+            }
+        }
+
+        public static string LoadSignatureFile(string filename, out string digest, out string block)
+        {
+            bool inSigBlock = false;
+            string[] lines = File.ReadAllLines(filename);
+
+            if (lines.Length < 4)
+            {
+                throw new InvalidDataException("Invalid zip signature file!");
+            }
+
+            digest = lines[0].Trim();
+
+            StringBuilder sb = new StringBuilder();
+
+            for (int index = 1; index < lines.Length; index++)
+            {
+                string line = lines[index];
+
+                if (line.StartsWith("# "))
+                {
+                    if (line.StartsWith("# SIG # Begin signature block"))
+                    {
+                        inSigBlock = true;
+                    }
+                    else if (line.StartsWith("# SIG # End signature block"))
+                    {
+                        inSigBlock = false;
+                    }
+                    else if (inSigBlock)
+                    {
+                        sb.Append(line, 2, line.Length - 2);
+                    }
+                }
+            }
+
+
+            block = sb.ToString();
+
+            sb = new StringBuilder();
+            sb.Append("ZipAuthenticode=");
+            sb.Append(digest);
+            sb.Append(",");
+            sb.Append(block);
+            return sb.ToString();
+        }
+
+        public static void SplitSignatureCommentLine(string sigCommentLine, out string digest, out string block)
+        {
+            if (!sigCommentLine.StartsWith("ZipAuthenticode=sha256:") || (sigCommentLine.Length < 89))
+            {
+                throw new InvalidDataException();
+            }
+
+            digest = sigCommentLine.Substring(16, 71);
+            block = sigCommentLine.Substring(88, sigCommentLine.Length - 88);
+        }
+
+        public static string SaveSignatureData(string sigCommentLine)
+        {
+            string sigDigest = string.Empty;
+            string sigBlock = string.Empty;
+
+            SplitSignatureCommentLine(sigCommentLine, out sigDigest, out sigBlock);
+
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine(sigDigest);
+
+            int index = 0;
+            int length = sigBlock.Length;
+
+            sb.AppendLine("# SIG # Begin signature block");
+
+            while (index < length)
+            {
+                int chunk = 64;
+
+                if (length < (index + 64))
+                {
+                    chunk = length - index;
+                }
+
+                sb.AppendLine("# " + sigBlock.Substring(index, chunk));
+
+                index += chunk;
+            }
+
+            sb.AppendLine("# SIG # End signature block");
+
+            return sb.ToString();
+        }
+
+        public static void SaveSignatureFile(string filename, string sigCommentLine)
+        {
+            string sigFileData = SaveSignatureData(sigCommentLine);
+            File.WriteAllBytes(filename, Encoding.UTF8.GetBytes(sigFileData));
+        }
+
         public void Save(string filename)
         {
             File.WriteAllBytes(filename, data);
