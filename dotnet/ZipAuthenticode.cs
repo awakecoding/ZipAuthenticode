@@ -3,6 +3,9 @@ using System.IO;
 using System.Text;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
+
+using Devolutions.Authenticode;
 
 namespace Devolutions.ZipAuthenticode
 {
@@ -455,6 +458,53 @@ namespace Devolutions.ZipAuthenticode
             data = File.ReadAllBytes(filename);
             string comment = GetFileComment(data) ?? string.Empty;
             Console.WriteLine("ZipFileComment: {0}", comment);
+        }
+
+        public static Signature Sign(SigningOption option, string fileName,
+            X509Certificate2 certificate, string timeStampServerUrl, string hashAlgorithm)
+        {
+            Signature signature = null;
+            string sigFileName = fileName + ".sig.ps1";
+
+            ZipFile zipFile = new ZipFile(fileName);
+            string zipDigest = zipFile.GetDigestString();
+            File.WriteAllBytes(sigFileName, Encoding.UTF8.GetBytes(zipDigest));
+
+            signature = SignatureHelper.SignFile(option, sigFileName, certificate, timeStampServerUrl, hashAlgorithm);
+
+            string sigDigest = string.Empty;
+            string sigBlock = string.Empty;
+            string sigCommentLine = ZipFile.LoadSignatureFile(sigFileName, out sigDigest, out sigBlock);
+
+            zipFile.SetFileComment(sigCommentLine);
+            zipFile.Save(fileName);
+
+            return signature;
+        }
+
+        public static Signature GetSignature(string fileName)
+        {
+            Signature signature = null;
+            string sigFileName = fileName + ".sig.ps1";
+
+            ZipFile zipFile = new ZipFile(fileName);
+            string zipDigest = zipFile.GetDigestString();
+
+            string? sigCommentLine = zipFile.GetSignatureString();
+
+            string sigDigest = string.Empty;
+            string sigBlock = string.Empty;
+            SplitSignatureCommentLine(sigCommentLine, out sigDigest, out sigBlock);
+
+            string sigFileData = zipFile.GetSignatureFileData() ?? String.Empty;
+            signature = SignatureHelper.GetSignature(".sig.ps1", sigFileData);
+
+            if (!sigDigest.Equals(zipDigest))
+            {
+                throw new Exception("zip digest mismatch!");
+            }
+
+            return signature;
         }
 
         public static string GetZipDigestString(string filename)

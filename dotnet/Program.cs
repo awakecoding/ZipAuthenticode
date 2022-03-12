@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography.X509Certificates;
 
 using Devolutions.Authenticode;
 using Devolutions.ZipAuthenticode;
@@ -46,9 +47,37 @@ namespace Devolutions.ZipAuthenticode
                  signature.SignerCertificate.Issuer);
         }
 
+        static void TestZipAuthenticode2()
+        {
+            Console.WriteLine("ZipAuthenticode2!");
+
+            SigningOption signingOption = SigningOption.Default;
+            string filename = "../data/test.zip";
+            X509Certificate2 certificate = null;
+            string timeStampServerUrl = null;
+            string hashAlgorithm = "sha256";
+
+            string thumbprint = "3dd090584f50b1c85dc2fbeaa7c293199c7f960a";
+            X509Store certStore = new X509Store(StoreName.My, StoreLocation.CurrentUser);
+
+            certStore.Open(OpenFlags.ReadOnly);
+            X509Certificate2Collection certCollection = certStore.Certificates.Find(X509FindType.FindByThumbprint, thumbprint, false);
+            certStore.Close();
+
+            certificate = certCollection[0];
+
+            Signature signature = ZipFile.Sign(signingOption, filename, certificate, timeStampServerUrl, hashAlgorithm);
+
+            Console.WriteLine("Signature1: {0}", signature.StatusMessage);
+
+            signature = ZipFile.GetSignature(filename);
+
+            Console.WriteLine("Signature1: {0}", signature.StatusMessage);
+        }
+
         static void Main(string[] args)
         {
-            TestZipAuthenticode();
+            TestZipAuthenticode2();
         }
     }
 }
