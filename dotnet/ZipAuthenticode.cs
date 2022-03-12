@@ -457,7 +457,6 @@ namespace Devolutions.ZipAuthenticode
         {
             data = File.ReadAllBytes(filename);
             string comment = GetFileComment(data) ?? string.Empty;
-            Console.WriteLine("ZipFileComment: {0}", comment);
         }
 
         public static Signature Sign(SigningOption option, string fileName,
