@@ -8,7 +8,9 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using DWORD = System.UInt32;
+
 using Devolutions.Authenticode;
+using Devolutions.ZipAuthenticode;
 
 namespace Devolutions.Authenticode
 {
@@ -620,6 +622,44 @@ namespace Devolutions.Authenticode
             int error = Marshal.GetLastWin32Error();
 
             return SecuritySupport.GetDWORDFromInt(error);
+        }
+
+        public static Signature SignFileEx(SigningOption option,
+                           string fileName,
+                           X509Certificate2 certificate,
+                           string timeStampServerUrl,
+                           string hashAlgorithm)
+        {
+            Signature signature = null;
+            string fileExtension = Path.GetExtension(fileName).ToLower();
+
+            if (fileExtension.Equals(".zip"))
+            {
+                signature = ZipFile.Sign(option, fileName, certificate, timeStampServerUrl, hashAlgorithm);
+            }
+            else
+            {
+                signature = SignFile(option, fileName, certificate, timeStampServerUrl, hashAlgorithm);
+            }
+
+            return signature;
+        }
+
+        public static Signature GetSignatureEx(string fileName, string fileContent)
+        {
+            Signature signature = null;
+            string fileExtension = Path.GetExtension(fileName).ToLower();
+
+            if (fileExtension.Equals(".zip"))
+            {
+                signature = ZipFile.GetSignature(fileName);
+            }
+            else
+            {
+                signature = GetSignature(fileName, fileContent);
+            }
+
+            return signature;
         }
     }
 }

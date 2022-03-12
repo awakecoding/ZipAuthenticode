@@ -285,7 +285,7 @@ namespace Devolutions.ZipAuthenticode
         /// </returns>
         protected override Authenticode.Signature PerformAction(string filePath)
         {
-            return SignatureHelper.GetSignature(filePath, null);
+            return SignatureHelper.GetSignatureEx(filePath, null);
         }
 
         /// <summary>
@@ -300,7 +300,7 @@ namespace Devolutions.ZipAuthenticode
         /// </returns>
         protected override Authenticode.Signature PerformAction(string sourcePathOrExtension, byte[] content)
         {
-            return SignatureHelper.GetSignature(sourcePathOrExtension, System.Text.Encoding.Unicode.GetString(content));
+            return SignatureHelper.GetSignatureEx(sourcePathOrExtension, System.Text.Encoding.Unicode.GetString(content));
         }
     }
 
@@ -567,7 +567,7 @@ namespace Devolutions.ZipAuthenticode
                     return null;
                 }
 
-                return SignatureHelper.SignFile(option,
+                return SignatureHelper.SignFileEx(option,
                                                 filePath,
                                                 Certificate,
                                                 TimestampServer,
