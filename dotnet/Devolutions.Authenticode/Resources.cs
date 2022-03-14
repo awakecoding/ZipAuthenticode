@@ -4,7 +4,7 @@ using System.Reflection;
 
 namespace Devolutions.Authenticode
 {
-    internal class Resources
+    public class Resources
     {
 
         private static global::System.Resources.ResourceManager resourceMan = null;
@@ -516,6 +516,61 @@ namespace Devolutions.Authenticode
             get
             {
                 return GetResourceString("MshSignature_Incompatible_HashAlgorithm", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///    Cannot sign code. The specified certificate is not suitable for code signing.
+        ///  
+        /// </summary>
+        public static string PowerShell_CertNotGoodForSigning
+        {
+            get
+            {
+                return ResourceManager.GetString("PowerShell_CertNotGoodForSigning", resourceCulture);
+            }
+        }
+
+
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///    Cannot sign code.  The TimeStamp server URL must be fully qualified in the form of http://<server url>
+        ///  
+        /// </summary>
+        public static string PowerShell_TimeStampUrlRequired
+        {
+            get
+            {
+                return ResourceManager.GetString("PowerShell_TimeStampUrlRequired", resourceCulture);
+            }
+        }
+
+
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///    The Get-AuthenticodeSignature cmdlet does not support directories. Supply a path to a file and retry.
+        ///  
+        /// </summary>
+        public static string PowerShell_CannotRetrieveFromContainer
+        {
+            get
+            {
+                return ResourceManager.GetString("PowerShell_CannotRetrieveFromContainer", resourceCulture);
+            }
+        }
+
+
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///    File {0} was not found.
+        ///  
+        /// </summary>
+        public static string PowerShell_FileNotFound
+        {
+            get
+            {
+                return ResourceManager.GetString("PowerShell_FileNotFound", resourceCulture);
             }
         }
     }

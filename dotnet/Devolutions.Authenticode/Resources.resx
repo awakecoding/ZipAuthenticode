@@ -157,4 +157,16 @@
   <data name="MshSignature_Incompatible_HashAlgorithm" xml:space="preserve">
     <value>The signature cannot be verified because it is incompatible with the current system. The hash algorithm is not valid.</value>
   </data>
+  <data name="PowerShell_CertNotGoodForSigning" xml:space="preserve">
+    <value>Cannot sign code. The specified certificate is not suitable for code signing.</value>
+  </data>
+  <data name="PowerShell_TimeStampUrlRequired" xml:space="preserve">
+    <value>Cannot sign code.  The TimeStamp server URL must be fully qualified in the form of http://&lt;server url&gt;</value>
+  </data>
+  <data name="PowerShell_CannotRetrieveFromContainer" xml:space="preserve">
+    <value>The Get-AuthenticodeSignature cmdlet does not support directories. Supply a path to a file and retry.</value>
+  </data>
+  <data name="PowerShell_FileNotFound" xml:space="preserve">
+    <value>File {0} was not found.</value>
+  </data>
 </root>

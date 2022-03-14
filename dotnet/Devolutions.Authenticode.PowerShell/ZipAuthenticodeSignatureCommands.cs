@@ -10,7 +10,7 @@ using System.Security.Cryptography.X509Certificates;
 
 using Devolutions.Authenticode;
 
-namespace Devolutions.ZipAuthenticode
+namespace Devolutions.Authenticode.PowerShell
 {
     /// <summary>
     /// Defines the base class from which all signature commands
@@ -175,11 +175,10 @@ namespace Devolutions.ZipAuthenticode
                         }
                         catch (ItemNotFoundException)
                         {
-                            /*
                             WriteError(
-                                SecurityUtils.CreateFileNotFoundErrorRecord(
-                                    SignatureCommands.FileNotFound,
-                                    "SignatureCommandsBaseFileNotFound", p));*/
+                                PSUtils.CreateFileNotFoundErrorRecord(
+                                    Resources.PowerShell_FileNotFound,
+                                    "SignatureCommandsBaseFileNotFound", p));
                         }
                     }
 
@@ -199,11 +198,10 @@ namespace Devolutions.ZipAuthenticode
 
                             if (resolvedFilePath == null)
                             {
-                                /*
-                                WriteError(SecurityUtils.CreateFileNotFoundErrorRecord(
-                                    SignatureCommands.FileNotFound,
+                                WriteError(PSUtils.CreateFileNotFoundErrorRecord(
+                                    Resources.PowerShell_FileNotFound,
                                     "SignatureCommandsBaseFileNotFound",
-                                    path));*/
+                                    path));
                             }
                             else
                             {
@@ -217,10 +215,9 @@ namespace Devolutions.ZipAuthenticode
 
                     if (!foundFile)
                     {
-                        /*
-                        WriteError(SecurityUtils.CreateFileNotFoundErrorRecord(
-                            SignatureCommands.CannotRetrieveFromContainer,
-                            "SignatureCommandsBaseCannotRetrieveFromContainer"));*/
+                        WriteError(PSUtils.CreateFileNotFoundErrorRecord(
+                            Resources.PowerShell_CannotRetrieveFromContainer,
+                            "SignatureCommandsBaseCannotRetrieveFromContainer"));
                     }
                 }
             }
