@@ -326,7 +326,7 @@ namespace Devolutions.Authenticode
             switch (status)
             {
                 case SignatureStatus.Valid:
-                    resourceString = MshSignature.MshSignature_Valid;
+                    resourceString = Resources.MshSignature_Valid;
                     break;
 
                 case SignatureStatus.UnknownError:
@@ -338,38 +338,38 @@ namespace Devolutions.Authenticode
                 case SignatureStatus.Incompatible:
                     if (error == Win32Errors.NTE_BAD_ALGID)
                     {
-                        resourceString = MshSignature.MshSignature_Incompatible_HashAlgorithm;
+                        resourceString = Resources.MshSignature_Incompatible_HashAlgorithm;
                     }
                     else
                     {
-                        resourceString = MshSignature.MshSignature_Incompatible;
+                        resourceString = Resources.MshSignature_Incompatible;
                     }
 
                     arg = filePath;
                     break;
 
                 case SignatureStatus.NotSigned:
-                    resourceString = MshSignature.MshSignature_NotSigned;
+                    resourceString = Resources.MshSignature_NotSigned;
                     arg = filePath;
                     break;
 
                 case SignatureStatus.HashMismatch:
-                    resourceString = MshSignature.MshSignature_HashMismatch;
+                    resourceString = Resources.MshSignature_HashMismatch;
                     arg = filePath;
                     break;
 
                 case SignatureStatus.NotTrusted:
-                    resourceString = MshSignature.MshSignature_NotTrusted;
+                    resourceString = Resources.MshSignature_NotTrusted;
                     arg = filePath;
                     break;
 
                 case SignatureStatus.NotSupportedFileFormat:
-                    resourceString = MshSignature.MshSignature_NotSupportedFileFormat;
+                    resourceString = Resources.MshSignature_NotSupportedFileFormat;
                     arg = System.IO.Path.GetExtension(filePath);
 
                     if (string.IsNullOrEmpty(arg))
                     {
-                        resourceString = MshSignature.MshSignature_NotSupportedFileFormat_NoExtension;
+                        resourceString = Resources.MshSignature_NotSupportedFileFormat_NoExtension;
                         arg = null;
                     }
 

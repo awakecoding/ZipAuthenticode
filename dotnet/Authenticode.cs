@@ -122,6 +122,7 @@ namespace Devolutions.Authenticode
                 // algorithm, it was invalid.
                 if (oidPtr == IntPtr.Zero)
                 {
+                    throw Utils.NewArgumentException(nameof(certificate), Authenticode.Resources.InvalidHashAlgorithm);
                     //throw PSTraceSource.NewArgumentException(
                     //    nameof(certificate),
                     //    Authenticode.InvalidHashAlgorithm);

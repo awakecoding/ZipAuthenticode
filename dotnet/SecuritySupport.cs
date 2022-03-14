@@ -235,5 +235,11 @@ namespace Devolutions.Authenticode
                 throw new ArgumentNullException(argName);
             }
         }
+
+        internal static Exception NewArgumentException(string paramName, string resourceString, params object[] args)
+        {
+            string message = string.Format(resourceString, args);
+            return new ArgumentException(message, paramName);
+        }
     }
 }

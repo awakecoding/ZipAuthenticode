@@ -458,17 +458,17 @@ namespace Devolutions.ZipAuthenticode
             string comment = GetFileComment(data) ?? string.Empty;
         }
 
-        public static Signature Sign(SigningOption option, string fileName,
+        public static Authenticode.Signature Sign(Authenticode.SigningOption option, string fileName,
             X509Certificate2 certificate, string timeStampServerUrl, string hashAlgorithm)
         {
-            Signature signature = null;
+            Authenticode.Signature signature = null;
             string sigFileName = fileName + ".sig.ps1";
 
             ZipFile zipFile = new ZipFile(fileName);
             string zipDigest = zipFile.GetDigestString();
             File.WriteAllBytes(sigFileName, Encoding.UTF8.GetBytes(zipDigest));
 
-            signature = SignatureHelper.SignFile(option, sigFileName, certificate, timeStampServerUrl, hashAlgorithm);
+            signature = Authenticode.SignatureHelper.SignFile(option, sigFileName, certificate, timeStampServerUrl, hashAlgorithm);
 
             string sigDigest = string.Empty;
             string sigBlock = string.Empty;
@@ -480,9 +480,9 @@ namespace Devolutions.ZipAuthenticode
             return signature;
         }
 
-        public static Signature GetSignature(string fileName)
+        public static Authenticode.Signature GetSignature(string fileName)
         {
-            Signature signature = null;
+            Authenticode.Signature signature = null;
             string sigFileName = fileName + ".sig.ps1";
 
             ZipFile zipFile = new ZipFile(fileName);
@@ -495,7 +495,7 @@ namespace Devolutions.ZipAuthenticode
             SplitSignatureCommentLine(sigCommentLine, out sigDigest, out sigBlock);
 
             string sigFileData = zipFile.GetSignatureFileData() ?? String.Empty;
-            signature = SignatureHelper.GetSignature(".sig.ps1", sigFileData);
+            signature = Authenticode.SignatureHelper.GetSignature(".sig.ps1", sigFileData);
 
             if (!sigDigest.Equals(zipDigest))
             {
