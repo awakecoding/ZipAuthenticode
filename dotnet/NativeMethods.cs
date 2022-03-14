@@ -15,6 +15,30 @@ using BOOL = System.UInt32;
 
 namespace Devolutions.Authenticode
 {
+    internal static class PinvokeDllNames
+    {
+        internal const string CryptAcquireContextDllName = "api-ms-win-security-cryptoapi-l1-1-0.dll";       /*20*/
+        internal const string CryptReleaseContextDllName = "api-ms-win-security-cryptoapi-l1-1-0.dll";       /*21*/
+        internal const string LocalFreeDllName = "api-ms-win-core-misc-l1-1-0.dll";                          /*31*/
+        internal const string CloseHandleDllName = "api-ms-win-core-handle-l1-1-0.dll";                      /*32*/
+        internal const string OpenProcessTokenDllName = "api-ms-win-core-processsecurity-l1-1-0.dll";        /*35*/
+        internal const string CryptSetProvParamDllName = "api-ms-win-security-cryptoapi-l1-1-0.dll";         /*48*/
+        internal const string GetNamedSecurityInfoDllName = "api-ms-win-security-provider-l1-1-0.dll";       /*49*/
+        internal const string SetNamedSecurityInfoDllName = "api-ms-win-security-provider-l1-1-0.dll";       /*50*/
+        internal const string ConvertStringSidToSidDllName = "api-ms-win-security-sddl-l1-1-0.dll";          /*51*/
+        internal const string IsValidSidDllName = "api-ms-win-security-base-l1-1-0.dll";                     /*52*/
+        internal const string GetLengthSidDllName = "api-ms-win-security-base-l1-1-0.dll";                   /*53*/
+        internal const string LsaFreeMemoryDllName = "api-ms-win-security-lsapolicy-l1-1-0.dll";             /*54*/
+        internal const string InitializeAclDllName = "api-ms-win-security-base-l1-1-0.dll";                  /*55*/
+        internal const string GetCurrentProcessDllName = "api-ms-win-core-processthreads-l1-1-0.dll";        /*56*/
+        internal const string GetCurrentThreadDllName = "api-ms-win-core-processthreads-l1-1-0.dll";         /*57*/
+        internal const string OpenThreadTokenDllName = "api-ms-win-core-processthreads-l1-1-0.dll";          /*58*/
+        internal const string LookupPrivilegeValueDllName = "api-ms-win-security-lsalookup-l2-1-0.dll";      /*59*/
+        internal const string AdjustTokenPrivilegesDllName = "api-ms-win-security-base-l1-1-0.dll";          /*60*/
+        internal const string LoadLibraryEx = "api-ms-win-core-libraryloader-l1-1-0.dll";                    /*81*/
+        internal const string FreeLibrary = "api-ms-win-core-libraryloader-l1-1-0.dll";                      /*82*/
+    }
+
     // Crypto API native constants
     internal static partial class NativeConstants
     {

@@ -11,7 +11,6 @@ using System.Security.Cryptography.X509Certificates;
 using DWORD = System.UInt32;
 
 using Devolutions.Authenticode;
-using Devolutions.ZipAuthenticode;
 
 namespace Devolutions.Authenticode
 {
@@ -103,9 +102,7 @@ namespace Devolutions.Authenticode
                 if ((timeStampServerUrl.Length <= 7) ||
                     (timeStampServerUrl.IndexOf("http://", StringComparison.OrdinalIgnoreCase) != 0))
                 {
-                    //throw PSTraceSource.NewArgumentException(
-                    //    nameof(certificate),
-                    //    Authenticode.TimeStampUrlRequired);
+                    throw Utils.NewArgumentException(nameof(certificate), Authenticode.Resources.TimeStampUrlRequired);
                 }
             }
 
@@ -123,9 +120,6 @@ namespace Devolutions.Authenticode
                 if (oidPtr == IntPtr.Zero)
                 {
                     throw Utils.NewArgumentException(nameof(certificate), Authenticode.Resources.InvalidHashAlgorithm);
-                    //throw PSTraceSource.NewArgumentException(
-                    //    nameof(certificate),
-                    //    Authenticode.InvalidHashAlgorithm);
                 }
                 else
                 {
@@ -138,13 +132,10 @@ namespace Devolutions.Authenticode
 
             if (!SecuritySupport.CertIsGoodForSigning(certificate))
             {
-                //throw PSTraceSource.NewArgumentException(
-                //        nameof(certificate),
-                //        Authenticode.CertNotGoodForSigning);
+                throw Utils.NewArgumentException(nameof(certificate), Authenticode.Resources.CertNotGoodForSigning);
             }
 
             SecuritySupport.CheckIfFileExists(fileName);
-            // SecurityUtils.CheckIfFileSmallerThan4Bytes(fileName);
 
             try
             {
@@ -218,9 +209,7 @@ namespace Devolutions.Authenticode
                     {
                         if (error == Win32Errors.NTE_BAD_ALGID)
                         {
-                            //throw PSTraceSource.NewArgumentException(
-                            //    nameof(certificate),
-                            //    Authenticode.InvalidHashAlgorithm);
+                            throw Utils.NewArgumentException(nameof(certificate), Authenticode.Resources.InvalidHashAlgorithm);
                         }
                     }
                 }
@@ -430,9 +419,8 @@ namespace Devolutions.Authenticode
 
             if (fileContent == null)
             {
-                //Utils.CheckArgForNullOrEmpty(fileName, "fileName");
+                Utils.CheckArgForNullOrEmpty(fileName, "fileName");
                 SecuritySupport.CheckIfFileExists(fileName);
-                // SecurityUtils.CheckIfFileSmallerThan4Bytes(fileName);
             }
 
             try

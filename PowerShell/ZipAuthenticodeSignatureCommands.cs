@@ -6,12 +6,10 @@ using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Management.Automation;
-//using System.Management.Automation.Internal;
 using System.Security.Cryptography.X509Certificates;
 
 using Devolutions;
 using Devolutions.Authenticode;
-using Devolutions.ZipAuthenticode;
 
 namespace Devolutions.ZipAuthenticode
 {

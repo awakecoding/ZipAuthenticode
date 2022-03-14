@@ -7,7 +7,7 @@ using System.Security.Cryptography.X509Certificates;
 
 using Devolutions.Authenticode;
 
-namespace Devolutions.ZipAuthenticode
+namespace Devolutions.Authenticode
 {
     public class ZipFile
     {
