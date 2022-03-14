@@ -45,7 +45,7 @@ Build the PowerShell module and import it:
 git clone https://github.com/awakecoding/ZipAuthenticode
 cd ZipAuthenticode/PowerShell
 dotnet build
-Import-Module .\bin\Debug\net6.0\Devolutions.ZipAuthenticode.PowerShell.dll
+Import-Module .\bin\Debug\netstandard2.0\Devolutions.Authenticode.PowerShell.dll
 ```
 
 The `Get-ZipAuthenticodeSignature` and `Set-ZipAuthenticodeSignature` PowerShell cmdlets should now be available.

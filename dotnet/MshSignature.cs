@@ -384,7 +384,7 @@ namespace Devolutions.Authenticode
                 }
                 else
                 {
-                    message = String.Format(resourceString, arg);
+                    message = string.Format(resourceString, arg);
                 }
             }
 

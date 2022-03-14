@@ -313,8 +313,7 @@ namespace Devolutions.ZipAuthenticode
             if (fileComment == null)
                 return null;
 
-            fileComment.ReplaceLineEndings("`n");
-            string[] commentLines = fileComment.Split("`n");
+            string[] commentLines = fileComment.Split('\n');
 
             for (int i = 0; i < commentLines.Length; i++)
             {

@@ -4,6 +4,7 @@
 #pragma warning disable 1634, 1691
 #pragma warning disable 56523
 
+using System;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 
