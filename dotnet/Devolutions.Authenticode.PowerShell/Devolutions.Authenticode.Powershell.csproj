@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="../dotnet/Devolutions.Authenticode.csproj" IncludeAssets="all" />
+    <ProjectReference Include="../Devolutions.Authenticode/Devolutions.Authenticode.csproj" IncludeAssets="all" />
   </ItemGroup>
 
 </Project>

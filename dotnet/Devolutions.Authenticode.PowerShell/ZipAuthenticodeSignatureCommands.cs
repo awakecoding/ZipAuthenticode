@@ -8,7 +8,6 @@ using System.IO;
 using System.Management.Automation;
 using System.Security.Cryptography.X509Certificates;
 
-using Devolutions;
 using Devolutions.Authenticode;
 
 namespace Devolutions.ZipAuthenticode
