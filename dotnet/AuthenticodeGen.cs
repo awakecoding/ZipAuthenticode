@@ -43,8 +43,8 @@ internal class Authenticode
         {
             if (resourceMan is null)
             {
-                //global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("System.Management.Automation.resources.Authenticode", typeof(Authenticode).Assembly);
-                //resourceMan = temp;
+                global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Devolutions.Authenticode.Authenticode", typeof(Authenticode).Assembly);
+                resourceMan = temp;
             }
 
             return resourceMan;
@@ -71,7 +71,7 @@ internal class Authenticode
 
     internal static string GetResourceString(string name, System.Globalization.CultureInfo Culture)
     {
-        return name;
+        return ResourceManager.GetString(name, resourceCulture);
     }
 
 

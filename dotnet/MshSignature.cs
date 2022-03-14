@@ -201,9 +201,9 @@ namespace Devolutions.Authenticode
                            X509Certificate2 signer,
                            X509Certificate2 timestamper)
         {
-            //Utils.CheckArgForNullOrEmpty(filePath, "filePath");
-            //Utils.CheckArgForNull(signer, "signer");
-            //Utils.CheckArgForNull(timestamper, "timestamper");
+            Utils.CheckArgForNullOrEmpty(filePath, "filePath");
+            Utils.CheckArgForNull(signer, "signer");
+            Utils.CheckArgForNull(timestamper, "timestamper");
 
             Init(filePath, signer, error, timestamper);
         }
@@ -219,8 +219,8 @@ namespace Devolutions.Authenticode
         internal Signature(string filePath,
                            X509Certificate2 signer)
         {
-            //Utils.CheckArgForNullOrEmpty(filePath, "filePath");
-            //Utils.CheckArgForNull(signer, "signer");
+            Utils.CheckArgForNullOrEmpty(filePath, "filePath");
+            Utils.CheckArgForNull(signer, "signer");
 
             Init(filePath, signer, 0, null);
         }
@@ -238,8 +238,8 @@ namespace Devolutions.Authenticode
                            DWORD error,
                            X509Certificate2 signer)
         {
-            //Utils.CheckArgForNullOrEmpty(filePath, "filePath");
-            //Utils.CheckArgForNull(signer, "signer");
+            Utils.CheckArgForNullOrEmpty(filePath, "filePath");
+            Utils.CheckArgForNull(signer, "signer");
 
             Init(filePath, signer, error, null);
         }
@@ -254,7 +254,7 @@ namespace Devolutions.Authenticode
         /// <returns>Constructed object.</returns>
         internal Signature(string filePath, DWORD error)
         {
-            //Utils.CheckArgForNullOrEmpty(filePath, "filePath");
+            Utils.CheckArgForNullOrEmpty(filePath, "filePath");
 
             Init(filePath, null, error, null);
         }

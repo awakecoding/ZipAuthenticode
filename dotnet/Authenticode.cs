@@ -94,8 +94,8 @@ namespace Devolutions.Authenticode
             DWORD error = 0;
             string hashOid = null;
 
-            //Utils.CheckArgForNullOrEmpty(fileName, "fileName");
-            //Utils.CheckArgForNull(certificate, "certificate");
+            Utils.CheckArgForNullOrEmpty(fileName, "fileName");
+            Utils.CheckArgForNull(certificate, "certificate");
 
             // If given, TimeStamp server URLs must begin with http://
             if (!string.IsNullOrEmpty(timeStampServerUrl))
@@ -291,7 +291,7 @@ namespace Devolutions.Authenticode
 
             Signature signature = null;
 
-            //Utils.CheckArgForNullOrEmpty(filename, "fileName");
+            Utils.CheckArgForNullOrEmpty(filename, "fileName");
             SecuritySupport.CheckIfFileExists(filename);
 
             try

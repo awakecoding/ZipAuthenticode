@@ -43,8 +43,8 @@ internal class MshSignature
         {
             if (resourceMan is null)
             {
-                //global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("System.Management.Automation.resources.MshSignature", typeof(MshSignature).Assembly);
-                //resourceMan = temp;
+                global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Devolutions.Authenticode.MshSignature", typeof(MshSignature).Assembly);
+                resourceMan = temp;
             }
 
             return resourceMan;
@@ -71,7 +71,7 @@ internal class MshSignature
 
     internal static string GetResourceString(string name, System.Globalization.CultureInfo Culture)
     {
-        return name;
+        return ResourceManager.GetString(name, resourceCulture);
     }
 
 

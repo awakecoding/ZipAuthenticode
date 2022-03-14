@@ -215,5 +215,25 @@ namespace Devolutions.Authenticode
         {
             return hresult >= 0;
         }
+
+        internal static void CheckArgForNullOrEmpty(string arg, string argName)
+        {
+            if (arg == null)
+            {
+                throw new ArgumentNullException(argName);
+            }
+            else if (arg.Length == 0)
+            {
+                throw new ArgumentException(argName);
+            }
+        }
+
+        internal static void CheckArgForNull(object arg, string argName)
+        {
+            if (arg == null)
+            {
+                throw new ArgumentNullException(argName);
+            }
+        }
     }
 }
