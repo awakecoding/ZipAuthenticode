@@ -60,4 +60,4 @@ function New-ModulePackage
     $OutputFile
 }
 
-New-ModulePackage ".\Devolutions.Authenticode" "."
+New-ModulePackage "$PSScriptRoot\Devolutions.Authenticode" "$PSScriptRoot"

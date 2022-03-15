@@ -1,0 +1,22 @@
+name: package
+on: workflow_dispatch
+jobs:
+  build-managed:
+    name: managed build
+    runs-on: windows-2022
+
+    steps:
+      - name: Check out ${{ github.repository }}
+        uses: actions/checkout@v2
+
+      - name: Build PowerShell Module
+        shell: pwsh
+        run: |
+          .\PowerShell\build.ps1
+          .\PowerShell\package.ps1
+
+      - name: Upload managed components
+        uses: actions/upload-artifact@v2
+        with:
+          name: devolutions-authenticode-pwsh
+          path: PowerShell/*.nupkg
