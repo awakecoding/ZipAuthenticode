@@ -12,7 +12,7 @@ jobs:
       - name: Build Nuget package
         shell: pwsh
         run: |
-          & dotnet publish ".\dotnet\Devolutions.Authenticode" -f netstandard2.0 -c Release -o ".\output"
+          & dotnet build ".\dotnet\Devolutions.Authenticode" -f netstandard2.0 -c Release -o ".\output"
 
       - name: Upload Nuget package
         uses: actions/upload-artifact@v2
