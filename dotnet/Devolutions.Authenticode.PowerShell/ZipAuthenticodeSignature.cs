@@ -65,14 +65,14 @@ namespace Devolutions.Authenticode.PowerShell
         /// Gets or sets the digital signature to be written to
         /// the output pipeline.
         /// </summary>
-        protected Authenticode.Signature Signature
+        protected Signature Signature
         {
             get { return _signature; }
 
             set { _signature = value; }
         }
 
-        private Authenticode.Signature _signature;
+        private Signature _signature;
 
         /// <summary>
         /// Gets or sets the file type of the byte array containing the content with
@@ -240,7 +240,7 @@ namespace Devolutions.Authenticode.PowerShell
         /// <param name="filePath">
         /// The name of the file on which to perform the action.
         /// </param>
-        protected abstract Authenticode.Signature PerformAction(string filePath);
+        protected abstract Signature PerformAction(string filePath);
 
         /// <summary>
         /// Performs the action (ie: get signature, or set signature)
@@ -252,7 +252,7 @@ namespace Devolutions.Authenticode.PowerShell
         /// <param name="content">
         /// The file contents on which to perform the action.
         /// </param>
-        protected abstract Authenticode.Signature PerformAction(string fileName, byte[] content);
+        protected abstract Signature PerformAction(string fileName, byte[] content);
     }
 
     /// <summary>
@@ -260,7 +260,7 @@ namespace Devolutions.Authenticode.PowerShell
     /// This cmdlet extracts the digital signature from the given file.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "ZipAuthenticodeSignature", DefaultParameterSetName = "ByPath", HelpUri = "https://go.microsoft.com/fwlink/?LinkID=2096823")]
-    [OutputType(typeof(Authenticode.Signature))]
+    [OutputType(typeof(Signature))]
     public sealed class GetAuthenticodeSignatureCommand : SignatureCommandsBase
     {
         /// <summary>
@@ -277,7 +277,7 @@ namespace Devolutions.Authenticode.PowerShell
         /// <returns>
         /// The signature on the specified file.
         /// </returns>
-        protected override Authenticode.Signature PerformAction(string filePath)
+        protected override Signature PerformAction(string filePath)
         {
             return SignatureHelper.GetSignatureEx(filePath, null);
         }
@@ -292,7 +292,7 @@ namespace Devolutions.Authenticode.PowerShell
         /// <returns>
         /// The signature on the specified file contents.
         /// </returns>
-        protected override Authenticode.Signature PerformAction(string sourcePathOrExtension, byte[] content)
+        protected override Signature PerformAction(string sourcePathOrExtension, byte[] content)
         {
             return SignatureHelper.GetSignatureEx(sourcePathOrExtension, System.Text.Encoding.Unicode.GetString(content));
         }
@@ -304,7 +304,7 @@ namespace Devolutions.Authenticode.PowerShell
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "ZipAuthenticodeSignature", SupportsShouldProcess = true, DefaultParameterSetName = "ByPath",
         HelpUri = "https://go.microsoft.com/fwlink/?LinkID=2096919")]
-    [OutputType(typeof(Authenticode.Signature))]
+    [OutputType(typeof(Signature))]
     public sealed class SetAuthenticodeSignatureCommand : SignatureCommandsBase
     {
         /// <summary>
@@ -434,7 +434,7 @@ namespace Devolutions.Authenticode.PowerShell
         /// <returns>
         /// The signature on the specified file.
         /// </returns>
-        protected override Authenticode.Signature PerformAction(string filePath)
+        protected override Signature PerformAction(string filePath)
         {
             Authenticode.SigningOption option = GetSigningOption(IncludeChain);
 
@@ -580,7 +580,7 @@ namespace Devolutions.Authenticode.PowerShell
         /// <summary>
         /// Not implemented.
         /// </summary>
-        protected override Authenticode.Signature PerformAction(string sourcePathOrExtension, byte[] content)
+        protected override Signature PerformAction(string sourcePathOrExtension, byte[] content)
         {
             throw new NotImplementedException();
         }

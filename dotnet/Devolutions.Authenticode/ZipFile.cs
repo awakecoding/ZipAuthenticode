@@ -306,6 +306,21 @@ namespace Devolutions.Authenticode
             }
         }
 
+        public byte[] ComputeHash()
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                long offset = FindZipFooterOffset(data);
+                offset += ZipEndOfCentralDirHeaderSize;
+                byte[] tbsData = new byte[offset];
+                Array.Copy(data, 0, tbsData, 0, offset);
+                tbsData[offset - 1] = 0;
+                tbsData[offset - 2] = 0;
+                byte[] result = sha256.ComputeHash(tbsData);
+                return result;
+            }
+        }
+
         public string? GetSignatureString()
         {
             string? fileComment = GetFileComment(data);
